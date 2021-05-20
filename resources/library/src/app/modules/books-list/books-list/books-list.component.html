@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="d-flex justify-content-between align-items-center">
+      <h2 class="mb-0">Books</h2>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-4">
+    <mat-form-field class="w-100 mb-3">
+      <input matInput placeholder="Search by book titles" [formControl]="search">
+    </mat-form-field>
+
+
+    <div class="d-block mt-0" *ngIf="isLoading">
+      <mat-spinner [diameter]="30"></mat-spinner>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-lg-4" *ngFor="let item of books">
+    <mat-card class="example-card mb-3">
+      <mat-card-header>
+        <mat-card-title [title]="item?.title">{{ item.title?.slice(0, 30) }}...</mat-card-title>
+        <mat-card-subtitle>{{ item.author }}</mat-card-subtitle>
+      </mat-card-header>
+      <div class="d-flex justify-content-center align-items-center mb-3">
+        <img [src]="item?.img" alt="Photo of a Shiba Inu">
+      </div>
+      <mat-card-content class="description">
+        <p [title]="item?.description">
+          {{ item.description?.slice(0, 200) }} ...
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <a routerLink="/book-details/{{ item.id }}" mat-button>View Details</a>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

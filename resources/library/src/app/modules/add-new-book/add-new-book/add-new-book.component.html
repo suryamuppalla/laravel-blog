@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="col-lg-5 offset-lg-3">
+
+    <mat-card>
+      <h2>Add New Book</h2>
+      <form class="example-form" [formGroup]="form" (ngSubmit)="addNewBook()">
+        <mat-form-field class="example-full-width">
+          <mat-label>Book Title</mat-label>
+          <input matInput formControlName="title">
+          <mat-error *ngIf="form?.get('title')?.errors">Please enter Title</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Book Description</mat-label>
+          <textarea matInput formControlName="description"></textarea>
+          <mat-error *ngIf="form?.get('description')?.errors">Please enter Description</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Book Author</mat-label>
+          <input matInput formControlName="author">
+          <mat-error *ngIf="form?.get('author')?.errors">Please enter Author</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Book Price</mat-label>
+          <input type="number" matInput formControlName="price">
+          <mat-error *ngIf="form?.get('price')?.errors">Please enter Price</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Book Rating</mat-label>
+          <input type="number" matInput formControlName="rating">
+          <mat-error *ngIf="form?.get('rating')?.errors">Please enter Rating</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Book Language</mat-label>
+          <input matInput formControlName="language">
+          <mat-error *ngIf="form?.get('language')?.errors">Please enter Language</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Image</mat-label>
+          <input type="text" matInput formControlName="img">
+
+          <mat-error *ngIf="form?.get('img')?.errors">Please enter image URL</mat-error>
+        </mat-form-field>
+
+        <div class="form-group mt-2">
+          <button mat-raised-button [disabled]="form?.invalid" color="primary" type="submit">Submit</button>
+        </div>
+      </form>
+    </mat-card>
+
+  </div>
+</div>
