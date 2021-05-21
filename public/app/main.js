@@ -449,7 +449,7 @@ AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCompo
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Constants", function() { return Constants; });
-const BaseUrl = `http://mi-linux.wlv.ac.uk/~2017781/blog/public/`;
+const BaseUrl = `https://mi-linux.wlv.ac.uk/~2017781/blog/public/`;
 // const BaseUrl = `https://mi-linux.wlv.ac.uk/~2017781/personal-library/public/`;
 class Constants {
 }
