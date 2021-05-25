@@ -3,7 +3,7 @@
 
     <mat-card>
       <h2>Add New Book</h2>
-      <form class="example-form" [formGroup]="form" (ngSubmit)="addNewBook()">
+      <form class="example-form" [formGroup]="form" (ngSubmit)="uploadBookFile()">
         <mat-form-field class="example-full-width">
           <mat-label>Book Title</mat-label>
           <input matInput formControlName="title">
@@ -40,12 +40,11 @@
           <mat-error *ngIf="form?.get('language')?.errors">Please enter Language</mat-error>
         </mat-form-field>
 
-        <mat-form-field class="example-full-width">
-          <mat-label>Image</mat-label>
-          <input type="text" matInput formControlName="img">
-
-          <mat-error *ngIf="form?.get('img')?.errors">Please enter image URL</mat-error>
-        </mat-form-field>
+        <div class="form-group mb-4">
+          <label for="img">Image</label>
+          <input type="file" class="form-control" id="img" formControlName="img" (change)="fileUpload($event)">
+          <mat-error *ngIf="form?.get('img')?.errors && form?.get('img')?.touched">Please enter image URL</mat-error>
+        </div>
 
         <div class="form-group mt-2">
           <button mat-raised-button [disabled]="form?.invalid" color="primary" type="submit">Submit</button>

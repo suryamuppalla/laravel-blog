@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Constants} from "../../../common/constants";
-import {ActivatedRoute} from "@angular/router";
+import {HttpClient} from '@angular/common/http';
+import {BaseUrl, Constants} from '../../../common/constants';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-book-details',
@@ -11,6 +11,7 @@ import {ActivatedRoute} from "@angular/router";
 export class BookDetailsComponent implements OnInit {
 
   public book: any = {};
+  public baseUrl = BaseUrl;
 
   constructor(
     private httpClient: HttpClient,

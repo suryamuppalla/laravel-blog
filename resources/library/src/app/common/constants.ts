@@ -1,6 +1,8 @@
-const BaseUrl = `//mi-linux.wlv.ac.uk/~2017781/blog/public/`;
-// const BaseUrl = `https://mi-linux.wlv.ac.uk/~2017781/personal-library/public/`;
+import {environment} from '../../environments/environment';
+
+export const BaseUrl = environment.apiUrl;
 
 export class Constants {
   static books = BaseUrl + `books`;
+  static bookFileUpload = BaseUrl + 'books/upload';
 }

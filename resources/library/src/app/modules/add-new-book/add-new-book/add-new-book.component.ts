@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Constants} from '../../../common/constants';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 const reg = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
 
@@ -24,6 +24,7 @@ export class AddNewBookComponent implements OnInit {
     language: new FormControl(null, Validators.required),
     img: new FormControl(null, [Validators.required])
   });
+  public formData = new FormData();
 
   constructor(
     private httpClient: HttpClient,
@@ -35,18 +36,43 @@ export class AddNewBookComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addNewBook(): void {
+  public fileUpload(event: any): void {
+    this.formData.append('file', event.target.files[0]);
+  }
+
+  uploadBookFile(): void {
     if (this.form.valid) {
       this.isLoading = true;
-      this.httpClient.post(Constants.books, this.form.value)
-        .subscribe((response: any) => {
-          this.snackBar.open(response.message, '', {
-            verticalPosition: 'top', duration: 4000
-          });
-          this.router.navigate(['/books']);
-        }, (error: any) => {
-          console.log(error);
+      delete this.form.value.file;
+
+      this.httpClient.post(
+        Constants.bookFileUpload,
+        this.formData
+      ).subscribe((response: any) => {
+        console.log(response);
+        if (response && response.data) {
+          this.addNewBook(response.data);
+        }
+      });
+    }
+  }
+
+  addNewBook(file: string): void {
+    if (this.form.valid) {
+      this.isLoading = true;
+      const data = this.form.value;
+      data.img = file;
+      this.httpClient.post(
+        Constants.books,
+        data
+      ).subscribe((response: any) => {
+        this.snackBar.open(response.message, '', {
+          verticalPosition: 'top', duration: 4000
         });
+        this.router.navigate(['/books']);
+      }, (error: any) => {
+        console.log(error);
+      });
     }
   }
 

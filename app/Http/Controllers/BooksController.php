@@ -52,10 +52,43 @@ class BooksController extends Controller
     public function updateBook(Request $request, $id)
     {
         // logic to update a Book record goes here
+        // logic to get a Book record goes here
+        if (Book::where('id', $id)->exists()) {
+            Book::where('id', $id)->first()->update($request->all());
+            return response()->json([
+                "message" => "Book Details Updated Successfully"
+            ], 200);
+        } else {
+            return response()->json([
+                "message" => "Book not found"
+            ], 404);
+        }
     }
 
     public function deleteBook($id)
     {
-        // logic to delete a Book record goes here
+        // logic to delete a Music record goes here
+        Book::findOrFail($id)->first()->delete();
+        return response()->json([
+            "message" => "Book Details Deleted Successfully"
+        ], 200);
+
+    }
+
+
+    public function uploadBookImage(Request $request)
+    {
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+
+            $file_name = time() . '.' . $file->getClientOriginalExtension();
+            $destinationPath = public_path('/images');
+
+            $file->move($destinationPath, $file_name);
+
+            return response()->json([
+                'data' => 'images/' . $file_name
+            ]);
+        }
     }
 }

@@ -20,3 +20,5 @@ Route::get('books/{id}', 'BooksController@getBook');
 Route::post('books', 'BooksController@createBook');
 Route::put('books/{id}', 'BooksController@updateBook');
 Route::delete('books/{id}', 'BooksController@deleteBook');
+
+Route::post('books/upload', 'BooksController@uploadBookImage');

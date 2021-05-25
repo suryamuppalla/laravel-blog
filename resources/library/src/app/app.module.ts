@@ -8,22 +8,24 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {BookDetailsModule} from './modules/book-details/book-details.module';
 import {AddNewBookModule} from './modules/add-new-book/add-new-book.module';
 import {BooksListModule} from './modules/books-list/books-list.module';
-import {MatButtonModule} from "@angular/material/button";
+import {MatButtonModule} from '@angular/material/button';
+import {UpdateBookModule} from './modules/update-book/update-book.module';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatToolbarModule,
-        BookDetailsModule,
-        AddNewBookModule,
-        BooksListModule,
-        MatButtonModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    BookDetailsModule,
+    AddNewBookModule,
+    UpdateBookModule,
+    BooksListModule,
+    MatButtonModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

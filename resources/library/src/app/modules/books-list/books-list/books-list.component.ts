@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient, HttpParams} from "@angular/common/http";
-import {Constants} from "../../../common/constants";
-import {FormControl, Validators} from "@angular/forms";
-import {debounceTime} from "rxjs/operators";
+import {HttpClient, HttpParams} from '@angular/common/http';
+import {BaseUrl, Constants} from '../../../common/constants';
+import {FormControl} from '@angular/forms';
+import {debounceTime} from 'rxjs/operators';
 
 @Component({
   selector: 'app-books-list',
@@ -14,6 +14,7 @@ export class BooksListComponent implements OnInit {
   public isLoading = false;
   public books: any[] = [];
   public search = new FormControl(null);
+  public baseUrl = BaseUrl;
 
   constructor(
     private httpClient: HttpClient
