@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UpdateBookComponent } from './update-music/update-book.component';
+import { UpdateBookComponent } from './update-book/update-book.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
 import {ConfirmDialogModule} from '../confirm-dialog/confirm-dialog.module';
@@ -10,6 +10,8 @@ import {RouterModule} from '@angular/router';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {HttpClientModule} from '@angular/common/http';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 
@@ -25,9 +27,11 @@ import {MatInputModule} from '@angular/material/input';
     MatDialogModule,
     MatButtonModule,
     RouterModule,
+    HttpClientModule,
     MatProgressSpinnerModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatSnackBarModule
   ]
 })
 export class UpdateBookModule { }

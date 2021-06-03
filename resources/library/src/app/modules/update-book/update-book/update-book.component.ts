@@ -62,6 +62,8 @@ export class UpdateBookComponent implements OnInit {
           this.book = response[0];
           this.form.patchValue(this.book);
           this.form.patchValue({img: ''});
+          this.form.updateValueAndValidity();
+          console.log(this.form.value);
         }
       });
   }

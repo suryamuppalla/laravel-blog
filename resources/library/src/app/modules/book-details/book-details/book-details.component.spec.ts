@@ -1,6 +1,10 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { BookDetailsComponent } from './book-details.component';
+import {BookDetailsComponent} from './book-details.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
+import {HttpClientModule} from '@angular/common/http';
+import {RouterModule} from '@angular/router';
 
 describe('BookDetailsComponent', () => {
   let component: BookDetailsComponent;
@@ -8,9 +12,16 @@ describe('BookDetailsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BookDetailsComponent ]
-    })
-    .compileComponents();
+      declarations: [
+        BookDetailsComponent
+      ],
+      imports: [
+        MatCardModule,
+        MatButtonModule,
+        HttpClientModule,
+        RouterModule.forRoot([])
+      ]
+    }).compileComponents();
   });
 
   beforeEach(() => {

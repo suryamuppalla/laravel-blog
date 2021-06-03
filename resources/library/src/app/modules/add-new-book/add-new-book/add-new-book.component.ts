@@ -25,6 +25,7 @@ export class AddNewBookComponent implements OnInit {
     img: new FormControl(null, [Validators.required])
   });
   public formData = new FormData();
+  public image: any;
 
   constructor(
     private httpClient: HttpClient,
@@ -37,7 +38,15 @@ export class AddNewBookComponent implements OnInit {
   }
 
   public fileUpload(event: any): void {
-    this.formData.append('file', event.target.files[0]);
+    const file = event.target.files[0];
+
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      this.image = reader.result;
+    };
+
+    this.formData.append('file', file);
   }
 
   uploadBookFile(): void {

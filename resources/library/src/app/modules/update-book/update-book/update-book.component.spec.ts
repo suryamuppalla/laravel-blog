@@ -1,40 +1,46 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {BooksListComponent} from './books-list.component';
+import {UpdateBookComponent} from './update-book.component';
+import {ReactiveFormsModule} from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
+import {ConfirmDialogModule} from '../../confirm-dialog/confirm-dialog.module';
+import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import {RouterModule} from '@angular/router';
-import {HttpClientModule} from '@angular/common/http';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-import {ReactiveFormsModule} from '@angular/forms';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {HttpClientModule} from '@angular/common/http';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-describe('BooksListComponent', () => {
-  let component: BooksListComponent;
-  let fixture: ComponentFixture<BooksListComponent>;
+describe('UpdateBookComponent', () => {
+  let component: UpdateBookComponent;
+  let fixture: ComponentFixture<UpdateBookComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [BooksListComponent],
+      declarations: [UpdateBookComponent],
       imports: [
+        ReactiveFormsModule,
         MatCardModule,
+        ConfirmDialogModule,
+        MatDialogModule,
         MatButtonModule,
         RouterModule.forRoot([]),
-        HttpClientModule,
+        MatProgressSpinnerModule,
         MatFormFieldModule,
         MatInputModule,
-        ReactiveFormsModule,
+        HttpClientModule,
         BrowserAnimationsModule,
-        MatProgressSpinnerModule
+        MatSnackBarModule
       ]
     })
       .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BooksListComponent);
+    fixture = TestBed.createComponent(UpdateBookComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
