@@ -42,10 +42,56 @@ describe('UpdateBookComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(UpdateBookComponent);
     component = fixture.componentInstance;
+    component.ngOnInit();
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('form invalid when empty', () => {
+    expect(component.form.valid).toBeFalsy();
+  });
+
+  it('Title field validity', () => {
+    const name = component.form.controls.title;
+    expect(name.valid).toBeFalsy();
+
+    name.setValue(null);
+    expect(name.hasError('required')).toBeTruthy();
+  });
+
+  it('Description field validity', () => {
+    const name = component.form.controls.description;
+    expect(name.valid).toBeFalsy();
+
+    name.setValue(null);
+    expect(name.hasError('required')).toBeTruthy();
+  });
+
+
+  it('Author field validity', () => {
+    const name = component.form.controls.author;
+    expect(name.valid).toBeFalsy();
+
+    name.setValue(null);
+    expect(name.hasError('required')).toBeTruthy();
+  });
+
+  it('Rating field validity', () => {
+    const name = component.form.controls.rating;
+    expect(name.valid).toBeFalsy();
+
+    name.setValue(null);
+    expect(name.hasError('required')).toBeTruthy();
+  });
+
+  it('Language field validity', () => {
+    const name = component.form.controls.language;
+    expect(name.valid).toBeFalsy();
+
+    name.setValue(null);
+    expect(name.hasError('required')).toBeTruthy();
   });
 });
