@@ -18,7 +18,7 @@ Route::get('/', function () {
 Route::get('books', 'BooksController@getAllBooks');
 Route::get('books/{id}', 'BooksController@getBook');
 Route::post('books', 'BooksController@createBook');
-Route::put('books/{id}', 'BooksController@updateBook');
-Route::delete('books/{id}', 'BooksController@deleteBook');
+Route::post('books/update/{id}', 'BooksController@updateBook');
+Route::post('books/delete/{id}', 'BooksController@deleteBook');
 
 Route::post('books/upload', 'BooksController@uploadBookImage');

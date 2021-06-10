@@ -99,8 +99,8 @@ export class UpdateBookComponent implements OnInit {
   updateNewBook(file: string): void {
     const data = this.form.value;
     data.img = file;
-    this.httpClient.put(
-      `${Constants.books}/${this.book.id}`,
+    this.httpClient.post(
+      `${Constants.books}/update/${this.book.id}`,
       data
     ).subscribe((response: any) => {
       this.snackBar.open(response.message, '', {
@@ -121,7 +121,7 @@ export class UpdateBookComponent implements OnInit {
       }
     }).afterClosed().subscribe(confirmed => {
       if (confirmed) {
-        this.httpClient.delete(`${Constants.books}/${this.book.id}`)
+        this.httpClient.post(`${Constants.books}/delete/${this.book.id}`, {})
           .subscribe((response: any) => {
             console.log(response);
             this.snackBar.open(response.message, '', {
